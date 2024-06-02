@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
+import Login from './app/Screens/LoginScreen/Login'
 import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo'
 import * as SecureStore from "expo-secure-store";
 import { NavigationContainer } from '@react-navigation/native'
-import TabNavigation from './Navigations/TabNavigation'
-import Login from './Screens/LoginScreen/Login';
+import TabNavigation from './app/Navigations/TabNavigation'
 
 const tokenCache = {
   async getToken(key) {
