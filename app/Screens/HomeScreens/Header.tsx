@@ -33,6 +33,7 @@ const Header = () => {
                     <FontAwesome name="search" size={24} color={Colors.PRIMARY} />
                 </TouchableOpacity>
             </View>
+            
         </View>
     );
 };
