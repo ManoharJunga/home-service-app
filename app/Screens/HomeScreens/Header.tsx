@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-expo';
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Colors from '@/constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,16 +18,20 @@ const Header = () => {
                             style={styles.userImage}
                         />)}
                     <View>
-                        <Text style={{ color: Colors.WHITE }}>Welcome</Text>
-                        <Text style={{ color: Colors.WHITE, fontSize: 20 }} >{user?.fullName}</Text>
+                        <Text style={{ color: Colors.WHITE, fontFamily:'outfit' }}>Welcome</Text>
+                        <Text style={{ color: Colors.WHITE, fontSize: 20, fontFamily:'outfit-semibold' }} >{user?.fullName}</Text>
                     </View>
                 </View>
                 <FontAwesome name="bookmark-o" size={24} color="white" />
             </View>
             {/* Search Bar Section */}
-            <View>
+            <View style={styles.searchBarContainer}>
                 <TextInput placeholder='Search' 
                 style={styles.textInput}/>
+                {/* Wrap the FontAwesome icon inside TouchableOpacity */}
+                <TouchableOpacity style={styles.searchbtn}>
+                    <FontAwesome name="search" size={24} color={Colors.PRIMARY} />
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -36,6 +40,13 @@ const Header = () => {
 export default Header;
 
 const styles = StyleSheet.create({
+    searchBarContainer:{
+        marginTop: 15,
+        display: 'flex',
+        flexDirection: 'row',
+        gap:10,
+        marginBottom: 10,
+    },
     container: {
         padding: 20,
         paddingTop: 40,
@@ -43,7 +54,11 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 25,
         borderBottomRightRadius: 25,
     },
-    
+    searchbtn:{
+        backgroundColor:Colors.WHITE,
+        padding: 10,
+        borderRadius: 8,
+    },
     profileMainContainer: {
         display: "flex",
         flexDirection: "row",
@@ -61,7 +76,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         backgroundColor: Colors.WHITE,
         borderRadius: 8,
-        width: '85%'
+        width: '85%',
+        fontSize: 16,
+        fontFamily:'outfit'
     },
     userImage: {
         width: 45,
